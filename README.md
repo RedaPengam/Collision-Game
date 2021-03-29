@@ -1,2 +1,2 @@
-# projet-collision
+# 2ristes
 test pour le readme à modifier
