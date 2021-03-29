@@ -1,5 +1,3 @@
-#include "raylib.h"
-#include <stdlib.h>     # Required for abs()
 from raylib.static import *
 
 screenWidth = 800
@@ -8,13 +6,13 @@ screenHeight = 450
 InitWindow(screenWidth, screenHeight, "raylib [shapes] example - collision area")
 
 # Box A: Moving box
-boxA = { 10, GetScreenHeight()/2 - 50, 200, 100 }
+boxA = [ 10, GetScreenHeight()/2 - 50, 200, 100 ]
 boxASpeedX = 4
 
 # Box B: Mouse moved box
-boxB = { GetScreenWidth()/2 - 30, GetScreenHeight()/2 - 30, 60, 60 }
+boxB = [ GetScreenWidth()/2 - 30, GetScreenHeight()/2 - 30, 60, 60 ]
 
-boxCollision = { 0 } # Collision rectangle
+boxCollision = [ 0 ] # Collision rectangle
 
 screenUpperLimit = 40      # Top menu limits
 
@@ -54,7 +52,6 @@ while (not WindowShouldClose()):    # Detect window close button or ESC key
 	# Pause Box A movement
 	if (IsKeyPressed(KEY_SPACE)): pause = not pause
 	#-----------------------------------------------------
-
 	# Draw
 	#-----------------------------------------------------
 	BeginDrawing()
@@ -75,9 +72,9 @@ while (not WindowShouldClose()):    # Detect window close button or ESC key
 
 			# Draw collision area
 			DrawText(TextFormat("Collision Area: %i", boxCollision.width*boxCollision.height), GetScreenWidth()/2 - 100, screenUpperLimit + 10, 20, BLACK)
-
+            
 		DrawFPS(10, 10)
-
+        
 	EndDrawing()
 	#-----------------------------------------------------
 
