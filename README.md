@@ -22,4 +22,4 @@ cartésien. Dans un second temps on souhaite être
 capable de déterminer si des objets d’une scène sont
 en collision.
 
-Les membres du groupe sont Jules Goueslard - Maxine Gravier - Clément Dohollou- Réda P. - Manon
+Les membres du groupe sont Jules Goueslard - Maxine Gravier - Clément Dohollou - Réda Pengam - Manon
