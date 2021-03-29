@@ -1,6 +1,6 @@
 # projet-collision
 
-Introduction
+Introduction :
 
 Un moteur physique vise à simuler les phénomènes
 physiques dans un environnement virtuel. Des
