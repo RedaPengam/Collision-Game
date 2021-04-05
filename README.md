@@ -1,6 +1,6 @@
 # projet-collision
 
-Introduction :
+### Introduction
 
 Un moteur physique vise à simuler les phénomènes
 physiques dans un environnement virtuel. Des
@@ -21,5 +21,7 @@ enveloppe englobante définie dans un espace
 cartésien. Dans un second temps on souhaite être
 capable de déterminer si des objets d’une scène sont
 en collision.
+
+### Membres du groupe
 
 Les membres du groupe sont : Jules Goueslard - Maxine Gravier - Clément Dohollou - Réda Pengam - Manon Braint
