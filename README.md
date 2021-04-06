@@ -1,4 +1,4 @@
-# projet-collision
+# Projet Collision // Groupe 2-ristes
 
 ### Introduction
 
@@ -22,6 +22,9 @@ cartésien. Dans un second temps on souhaite être
 capable de déterminer si des objets d’une scène sont
 en collision.
 
-### Membres du groupe
+Les membres du groupe sont : Jules Goueslard, Maxine Gravier, Clément Dohollou, Réda Pengam et Manon Braint
 
-Les membres du groupe sont : Jules Goueslard - Maxine Gravier - Clément Dohollou - Réda Pengam - Manon Braint
+### Installation
+
+- Télécharger le dossier *Collision Game*
+- Compiler le fichier *class_Main.py*
