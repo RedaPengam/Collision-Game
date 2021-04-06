@@ -2,6 +2,7 @@ import os, time, sys
 import random as rd
 import pygame as pg
 from pathlib import Path
+from class_Joueur import Joueur
 
 ##### path #####
 
@@ -57,10 +58,10 @@ def menu_window():
     global click
 
     while True:
-        screen.blit(background, (0, 0))
-        display_text('Menu', 20, 20)
-        mx, my = pg.mouse.get_pos()
-        button = pg.Rect(520, 580, 200, 50)
+        screen.blit(background, (0, 0)) # prints the background
+        display_text('Menu', 20, 20) # prints text info
+        mx, my = pg.mouse.get_pos() # gets mouse position
+        button = pg.Rect(520, 580, 200, 50) # draws a button
 
         # if the user clicked on the play button, start a new game
         if button.collidepoint((mx, my)):
@@ -95,13 +96,15 @@ def menu_window():
 
 def game_window():
 
-    global click
-
     while True:
-        screen.blit(background, (0, 0))
-        display_text('Game', 20, 20)
-        mx, my = pg.mouse.get_pos()
-        button = pg.Rect(520, 580, 200, 50)
+        # GUI
+        screen.blit(background, (0, 0)) # prints the background
+        display_text('Game', 20, 20) # prints text info
+        mx, my = pg.mouse.get_pos() # gets mouse position
+        button = pg.Rect(520, 580, 200, 50) # draws a button
+
+        # sprites
+        screen.blit(Joueur(1).image, Joueur(1).rect)
 
         for event in pg.event.get():
             # if the user clicked on the cross button, exit game
