@@ -25,10 +25,13 @@ class Asteroid(pg.sprite.Sprite):
         self.image = pg.transform.rotozoom(self.origin_image, self.angle, 1)
         self.rect = self.image.get_rect(center = self.rect)
 
-    def move(self):
+    def move1(self):
         self.rect.y += self.velocity
         self.rect.x += self.velocity
-        self.rotate
-        
+
+    def move2(self):
+        self.rect.y += self.velocity
+        self.rect.x -= self.velocity
+
     def remove(self):
         self.asteroid.remove(self)

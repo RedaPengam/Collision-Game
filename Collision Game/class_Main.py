@@ -28,7 +28,8 @@ while gameIsOn:
     # applies sprites
     screen.blit(game.player1.image, game.player1.rect)
     screen.blit(game.player2.image, game.player2.rect)
-    screen.blit(game.asteroid.image, game.asteroid.rect)
+    screen.blit(game.asteroid1.image, game.asteroid1.rect)
+    screen.blit(game.asteroid2.image, game.asteroid2.rect)
 
     # refreshes the screen
     pg.display.flip()
@@ -47,19 +48,15 @@ while gameIsOn:
     elif game.pressed.get(pg.K_DOWN) and game.player2.rect.y < 630 :
         game.player2.move_down()
 
-<<<<<<< HEAD
     # asteroid actions
-    game.asteroid.move()
+    game.asteroid1.move1()
+    game.asteroid2.move2()
     # asteroid off screen
-    if (0 > game.asteroid.rect.y or game.asteroid.rect.y > 720) or (0 > game.asteroid.rect.x or game.asteroid.rect.x > 1280):
-        game.asteroid.initialPosition()
-=======
-    game.asteroid.move()
-    # asteroid off screen
-    if (0 > game.asteroid.rect.y and game.asteroid.rect.y > 720) or (0 > game.asteroid.rect.x and game.asteroid.rect.x > 1280):
-        game.asteroid.remove()
->>>>>>> 08fb1eabc35aaf6a773ed0e3f2f3a098d7069293
-    
+    if (0 > game.asteroid1.rect.y or game.asteroid1.rect.y > 720) or (0 > game.asteroid1.rect.x or game.asteroid1.rect.x > 1280):
+        game.asteroid1.initialPosition()
+    if (0 > game.asteroid2.rect.y or game.asteroid2.rect.y > 720) or (0 > game.asteroid2.rect.x or game.asteroid2.rect.x > 1280):
+        game.asteroid2.initialPosition()
+
     # looks for key pressed every 1/60 sec
     for event in pg.event.get():
         # if the player hits the cross window button

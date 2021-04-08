@@ -16,7 +16,8 @@ class Game:
         # keys currently pressed
         self.pressed = {}
         # creation of asteroids
-        self.asteroid = Asteroid()
+        self.asteroid1 = Asteroid()        
+        self.asteroid2 = Asteroid()
 
 
 
