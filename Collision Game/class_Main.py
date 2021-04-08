@@ -2,7 +2,8 @@ import pygame as pg
 import sys
 from class_Player import Player
 from class_Game import Game
-from class_Asteroïd import Asteroid
+from class_Asteroid import Asteroid
+from class_Projectile import Projectile
 
 pg.init()
 
