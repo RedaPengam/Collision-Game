@@ -47,11 +47,18 @@ while gameIsOn:
     elif game.pressed.get(pg.K_DOWN) and game.player2.rect.y < 630 :
         game.player2.move_down()
 
+<<<<<<< HEAD
     # asteroid actions
     game.asteroid.move()
     # asteroid off screen
     if (0 > game.asteroid.rect.y or game.asteroid.rect.y > 720) or (0 > game.asteroid.rect.x or game.asteroid.rect.x > 1280):
         game.asteroid.initialPosition()
+=======
+    game.asteroid.move()
+    # asteroid off screen
+    if (0 > game.asteroid.rect.y and game.asteroid.rect.y > 720) or (0 > game.asteroid.rect.x and game.asteroid.rect.x > 1280):
+        game.asteroid.remove()
+>>>>>>> 08fb1eabc35aaf6a773ed0e3f2f3a098d7069293
     
     # looks for key pressed every 1/60 sec
     for event in pg.event.get():
