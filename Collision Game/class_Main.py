@@ -31,6 +31,11 @@ while gameIsOn:
     screen.blit(game.player2.image, game.player2.rect)
     screen.blit(game.asteroid1.image, game.asteroid1.rect)
     screen.blit(game.asteroid2.image, game.asteroid2.rect)
+    game.player1.all_projectiles.draw(screen)
+    
+    #projectile
+    # for projectile in game.player1.all_projectiles:
+    #     Projectile.move(self)
 
     # player1 actions if key pressed
     if game.pressed.get(pg.K_w) and game.player1.rect.y > 20 :
@@ -67,6 +72,10 @@ while gameIsOn:
         #  detects if the player hit a key from the keyboard
         elif event.type == pg.KEYDOWN:
             game.pressed[event.key] = True
+            
+            if event.key==pg.K_SPACE:
+                game.player1.launch_projectile()
+                
         elif event.type == pg.KEYUP:
             game.pressed[event.key] = False
     
