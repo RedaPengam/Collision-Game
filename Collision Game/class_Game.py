@@ -1,5 +1,6 @@
 import pygame as pg
 from class_Player import Player
+from class_Asteroïd import Asteroid
 
 class Game:
 
@@ -14,6 +15,8 @@ class Game:
         self.player2.image = pg.transform.scale(self.player2.image, (100, 70)) 
         # keys currently pressed
         self.pressed = {}
+        # creation of asteroids
+        self.asteroid = Asteroid()
 
 
 
