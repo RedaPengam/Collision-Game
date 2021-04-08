@@ -35,10 +35,10 @@ while gameIsOn:
     game.player2.all_projectiles.draw(screen)
     
     #déplacment des projectiles
-    # for projectile in game.player1.all_projectiles:
-    #     Projectile.move()
-    # for projectile in game.player2.all_projectiles:
-    #     Projectile.move()
+    for projectile in game.player1.all_projectiles:
+        Projectile.move1(projectile)
+    for projectile in game.player2.all_projectiles:
+        Projectile.move2(projectile)
 
     # player1 actions if key pressed
     if game.pressed.get(pg.K_w) and game.player1.rect.y > 20 :
