@@ -7,7 +7,7 @@ class Asteroid(pg.sprite.Sprite):
         super().__init__()
         self.health = 2
         self.max_health = 2
-        self.velocity = 1
+        self.velocity = 2
         self.image = pg.image.load('data/asteroid.png')
         self.image = pg.transform.scale(self.image, (100, 70))
         self.rect = self.image.get_rect()
