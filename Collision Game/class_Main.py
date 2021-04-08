@@ -32,9 +32,6 @@ while gameIsOn:
     screen.blit(game.asteroid1.image, game.asteroid1.rect)
     screen.blit(game.asteroid2.image, game.asteroid2.rect)
 
-    # refreshes the screen
-    pg.display.flip()
-
     # player1 actions if key pressed
     if game.pressed.get(pg.K_w) and game.player1.rect.y > 20 :
         game.player1.move_up()
@@ -47,14 +44,12 @@ while gameIsOn:
     elif game.pressed.get(pg.K_DOWN) and game.player2.rect.y < 630 :
         game.player2.move_down()
 
-    # asteroid actions
+    # asteroids actions
     game.asteroid1.move1()
     game.asteroid2.move2()
-    # asteroid off screen
-    if (0 > game.asteroid1.rect.y or game.asteroid1.rect.y > 720) or (0 > game.asteroid1.rect.x or game.asteroid1.rect.x > 1280):
-        game.asteroid1.initialPosition()
-    if (0 > game.asteroid2.rect.y or game.asteroid2.rect.y > 720) or (0 > game.asteroid2.rect.x or game.asteroid2.rect.x > 1280):
-        game.asteroid2.initialPosition()
+
+    # refreshes the screen
+    pg.display.flip()
 
     # looks for key pressed every 1/60 sec
     for event in pg.event.get():
