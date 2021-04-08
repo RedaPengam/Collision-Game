@@ -2,8 +2,7 @@ import pygame as pg
 import sys
 from class_Player import Player
 from class_Game import Game
-
-##### game window #####
+from class_Asteroïd import Asteroid
 
 pg.init()
 
@@ -14,28 +13,44 @@ screen = pg.display.set_mode((1280, 720), pg.RESIZABLE) # creates the screen : t
 background = pg.image.load('data/background.jpg').convert() # creates the background picture variable that will be printed on the screen
 background = pg.transform.scale(background, (1280, 720))
 
-# Loads the game class
+# loads the game class
 game = Game()
 
 # for later if we use the mouse
 click = False
 
-#### game itself ####
-
-while True:
+gameIsOn = True
+while gameIsOn:
     # applies the background
     screen.blit(background, (0, 0))
+    
     # applies sprites
     screen.blit(game.player1.image, game.player1.rect)
     screen.blit(game.player2.image, game.player2.rect)
+    screen.blit(game.asteroid.image, game.asteroid.rect)
+
     # refreshes the screen
     pg.display.flip()
-    # player actions if key pressed
-    if game.pressed.get(pg.K_UP) and game.player1.rect.y > 20 :
-        game.player1.move_up()
-    elif game.pressed.get(pg.K_DOWN) and game.player1.rect.y < 630 :
-        game.player1.move_down()
 
+    # ATTENTION A CODER EN QWERTY POUR DE L'AZERTY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    # player1 actions if key pressed
+    if game.pressed.get(pg.K_w) and game.player1.rect.y > 20 :
+        game.player1.move_up()
+    elif game.pressed.get(pg.K_s) and game.player1.rect.y < 630 :
+        game.player1.move_down()
+    
+    # player2 actions if key pressed
+    if game.pressed.get(pg.K_UP) and game.player2.rect.y > 20 :
+        game.player2.move_up()
+    elif game.pressed.get(pg.K_DOWN) and game.player2.rect.y < 630 :
+        game.player2.move_down()
+
+    game.asteroid.move()
+    # asteroid off screen
+    if (0 > game.asteroid.rect.y and game.asteroid.rect.y > 720) or (0 > game.asteroid.rect.x and game.asteroid.rect.x > 1280):
+        game.asteroid.remove()
+    
     # looks for key pressed every 1/60 sec
     for event in pg.event.get():
         # if the player hits the cross window button
