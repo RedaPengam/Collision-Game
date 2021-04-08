@@ -25,12 +25,12 @@ class Projectile(pg.sprite.Sprite):
         #on fait se déplacer le projectile
         self.rect.x +=self.velocity
         #le projectile sort de l'écran: on le supprime
-        if self.rect.x>1080:
+        if self.rect.x>1280:
             self.remove()
             
     def move2(self):
         #on fait se déplacer le projectile
         self.rect.x -=self.velocity
         #le projectile sort de l'écran: on le supprime
-        if self.rect.x<0:
+        if self.rect.x<-50:
             self.remove()
