@@ -2,6 +2,7 @@ import pygame as pg
 import sys
 from class_Player import Player
 from class_Game import Game
+from class_Asteroïd import Asteroid
 
 pg.init()
 
@@ -26,7 +27,8 @@ while gameIsOn:
     # applies sprites
     screen.blit(game.player1.image, game.player1.rect)
     screen.blit(game.player2.image, game.player2.rect)
-    
+    screen.blit(game.asteroid.image, game.asteroid.rect)
+
     # refreshes the screen
     pg.display.flip()
 
@@ -44,6 +46,11 @@ while gameIsOn:
     elif game.pressed.get(pg.K_DOWN) and game.player2.rect.y < 630 :
         game.player2.move_down()
 
+    game.asteroid.move()
+    # asteroid off screen
+    if (0 > game.asteroid.rect.y and game.asteroid.rect.y > 720) or (0 > game.asteroid.rect.x and game.asteroid.rect.x > 1280):
+        game.asteroid.remove()
+    
     # looks for key pressed every 1/60 sec
     for event in pg.event.get():
         # if the player hits the cross window button
