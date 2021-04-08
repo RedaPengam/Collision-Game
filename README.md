@@ -16,4 +16,4 @@ Les membres du groupe sont : Jules Goueslard, Maxine Gravier, Clément Dohollou,
 - Compiler le fichier *class_Main.py*
 
 ### Contrôle
-Le jeu se joue à deux : le but est de détruire le vaisseau adverse tout en évitant la pluie d'astéroïde ! Le joueur à gauche déplace son vaisseau avec les touches S et W et tire avec la barre Espace. Le joueur à droite se déplace avec les flêches directionnelles et tire avec la touche M.
+Le jeu se joue à deux : le but est de détruire le vaisseau adverse tout en évitant la pluie d'astéroïdew ! Le joueur à gauche déplace son vaisseau avec les touches S et W et tire avec la barre Espace. Le joueur à droite se déplace avec les flêches directionnelles et tire avec la touche M.
