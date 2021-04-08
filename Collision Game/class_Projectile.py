@@ -8,9 +8,9 @@ Created on Thu Apr  8 14:23:16 2021
 import pygame as pg
 
 class Projectile(pg.sprite.Sprite):
-    def _init_(self,class_Player):
-        super()._init_()
-        self.class_Player=player
+    def __init__(self,class_Player):
+        super().__init__()
+        self.class_Player=class_Player
         self.velocity =5
         self.image=pg.image.load('data/laser.png')
         self.image=pg.transform.scale(self.image, (50,50))
@@ -19,7 +19,7 @@ class Projectile(pg.sprite.Sprite):
         self.rect.y=class_Player.rect.y
     
     def remove(self):
-        self.player.all_projectiles.remove(self)
+        self.class_Player.all_projectiles.remove(self)
         
     def move(self):
         #on fait se déplacer le projectile
