@@ -4,6 +4,7 @@ from class_Player import Player
 from class_Game import Game
 from class_Asteroid import Asteroid
 from class_Projectile import Projectile
+# ATTENTION les touches pygame sont en qwerty 
 
 pg.init()
 
@@ -33,8 +34,6 @@ while gameIsOn:
 
     # refreshes the screen
     pg.display.flip()
-
-    # ATTENTION A CODER EN QWERTY POUR DE L'AZERTY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     # player1 actions if key pressed
     if game.pressed.get(pg.K_w) and game.player1.rect.y > 20 :
