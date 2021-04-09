@@ -14,7 +14,7 @@ class Player(pg.sprite.Sprite):
         self.image = pg.transform.scale(self.image, (100, 70))
         self.rect = self.image.get_rect()
         self.rect.x = 20
-        self.rect.y = 90
+        self.rect.y = 320
         
     def launch_projectile(self):
         self.all_projectiles.add(Projectile(self))

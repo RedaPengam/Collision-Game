@@ -10,7 +10,7 @@ class Game:
         self.player2 = Player()
         # corrects the player2 initial position
         self.player2.rect.x = 1160
-        self.player2.rect.y = 520
+        self.player2.rect.y = 400
         self.player2.image = pg.image.load('data/joueur2.png')
         self.player2.image = pg.transform.scale(self.player2.image, (100, 70)) 
         # keys currently pressed

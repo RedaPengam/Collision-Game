@@ -70,6 +70,7 @@ while gameIsOn:
     pg.display.update()
     clock.tick(64) # fps
 
+    print(game.pressed)
     # looks for key pressed every 1/60 sec
     for event in pg.event.get():
         # if the player hits the cross window button
@@ -87,10 +88,10 @@ while gameIsOn:
         elif event.type == pg.KEYDOWN:
             game.pressed[event.key] = True
             
-            if event.key==pg.K_SPACE:
+            if event.key == pg.K_SPACE:
                 game.player1.launch_projectile()
                 
-            if event.key==pg.K_m:
+            if event.key == pg.K_RCTRL:
                 game.player2.launch_projectile()
                 
         elif event.type == pg.KEYUP:
