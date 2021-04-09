@@ -1,5 +1,5 @@
 import pygame as pg
-import sys
+import sys, time
 from class_Player import Player
 from class_Game import Game
 from class_Asteroid import Asteroid
@@ -7,6 +7,7 @@ from class_Projectile import Projectile
 # ATTENTION les touches pygame sont en qwerty 
 
 pg.init()
+clock = pg.time.Clock()
 
 # window and screen
 pg.display.set_caption('Collision Game') # labels the window
@@ -57,7 +58,9 @@ while gameIsOn:
     game.asteroid2.move2()
 
     # refreshes the screen
-    pg.display.flip()
+    #pg.display.flip()
+    pg.display.update()
+    clock.tick(64)
 
     # looks for key pressed every 1/60 sec
     for event in pg.event.get():
