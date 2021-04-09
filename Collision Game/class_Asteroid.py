@@ -20,21 +20,26 @@ class Asteroid(pg.sprite.Sprite):
         self.rect.x = rd.randint(0, 1280)
         self.rect.y = 0
 
-    def rotate(self):
-        self.angle += 12
+    def rotate1(self):
+        self.angle += rd.randint(1, 5)
+        self.image = pg.transform.rotozoom(self.origin_image, self.angle, 1)
+        self.rect = self.image.get_rect(center = self.rect.center)
+    
+    def rotate2(self):
+        self.angle -= rd.randint(5, 10)
         self.image = pg.transform.rotozoom(self.origin_image, self.angle, 1)
         self.rect = self.image.get_rect(center = self.rect.center)
 
     def move1(self):
-        self.rect.y += self.velocity
-        self.rect.x += self.velocity
+        self.rect.y += rd.randint(2, 4)
+        self.rect.x += rd.randint(1, 3)
         # asteroid off screen
         if (0 > self.rect.y or self.rect.y > 720) or (0 > self.rect.x or self.rect.x > 1280):
             self.initialPosition()
 
     def move2(self):
-        self.rect.y += self.velocity
-        self.rect.x -= self.velocity
+        self.rect.y += rd.randint(2, 4)
+        self.rect.x -= rd.randint(1, 3)
         # asteroid off screen       
         if (0 > self.rect.y or self.rect.y > 720) or (0 > self.rect.x or self.rect.x > 1280):
             self.initialPosition()

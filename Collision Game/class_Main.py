@@ -32,10 +32,12 @@ while gameIsOn:
     screen.blit(game.player2.image, game.player2.rect)
     screen.blit(game.asteroid1.image, game.asteroid1.rect)
     screen.blit(game.asteroid2.image, game.asteroid2.rect)
+    screen.blit(game.asteroid3.image, game.asteroid3.rect)
+    screen.blit(game.asteroid4.image, game.asteroid4.rect)
     game.player1.all_projectiles.draw(screen)
     game.player2.all_projectiles.draw(screen)
     
-    #déplacment des projectiles
+    # déplacment des projectiles
     for projectile in game.player1.all_projectiles:
         Projectile.move1(projectile)
     for projectile in game.player2.all_projectiles:
@@ -55,12 +57,18 @@ while gameIsOn:
 
     # asteroids actions
     game.asteroid1.move1()
+    game.asteroid1.rotate1()
     game.asteroid2.move2()
+    game.asteroid2.rotate2()
+    game.asteroid3.move1()
+    game.asteroid3.rotate2()
+    game.asteroid4.move2()
+    game.asteroid4.rotate1()
 
     # refreshes the screen
     #pg.display.flip()
     pg.display.update()
-    clock.tick(64)
+    clock.tick(64) # fps
 
     # looks for key pressed every 1/60 sec
     for event in pg.event.get():
