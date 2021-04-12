@@ -63,6 +63,17 @@ class Asteroid(pg.sprite.Sprite):
         # asteroid off screen       
         if (0 > self.rect.y or self.rect.y > 720) or (0 > self.rect.x or self.rect.x > 1280):
             self.initialPosition()
+            
+        # verifier si l'asteroid entre en collision avec un joueur    
+        for player in self.game.check_collision(self, self.game.all_players):
+            
+            
+            # suprimer l'asteroid
+            self.remove()
+            
+            # infliger des degats aux joueurs
+            player.damage(self.damage)
+        
 
     def remove(self):
         self.game.all_asteroids.remove(self)
