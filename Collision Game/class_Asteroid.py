@@ -65,4 +65,4 @@ class Asteroid(pg.sprite.Sprite):
             self.initialPosition()
 
     def remove(self):
-        self.image = pg.kill(self)
+        self.game.all_asteroids.remove(self)
