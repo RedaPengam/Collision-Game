@@ -23,8 +23,6 @@ class Asteroid(pg.sprite.Sprite):
         self.health-= amount
         # if self.health <= 0 :
         #     self.remove()
-        
-           
 
     def initialPosition(self):
         self.rect.x = rd.randint(0, 1280)

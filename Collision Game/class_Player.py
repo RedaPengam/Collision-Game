@@ -3,14 +3,14 @@ from class_Projectile import Projectile
 
 class Player(pg.sprite.Sprite):
 
-    def __init__(self,game):
+    def __init__(self, game):
         super().__init__()
         self.game = game
         self.health = 100
         self.max_health = 100
         self.attack = 10
         self.velocity = 6
-        self.all_projectiles=pg.sprite.Group()
+        self.all_projectiles = pg.sprite.Group()
         self.image = pg.image.load('data/joueur1.png')
         self.image = pg.transform.scale(self.image, (100, 70))
         self.rect = self.image.get_rect()
@@ -18,12 +18,12 @@ class Player(pg.sprite.Sprite):
         self.rect.y = 320
         
     def damage(self,amount):
-        #infliger les dégats
-        self.health-=amount
+        # infliger les dégats
+        self.health -= amount
         
-        #vérifier qu'il lui reste des points de vie 
+        # vérifier qu'il lui reste des points de vie 
         if self.health <= 0:
-            #réappatraitre comme un nouveau monstre 
+            # réappatraitre comme un nouveau monstre 
             self.rect.y = 320 
             self.health = self.max_health 
     
@@ -45,8 +45,11 @@ class Player(pg.sprite.Sprite):
         pg.draw.rect(surface, bar_color, bar_position)
         
     
-        
-    def launch_projectile(self): 
+    def launch_projectile1(self): 
+        self.all_projectiles.add(Projectile(self))
+
+    def launch_projectile2(self):
+        Projectile(self).rect.x = self.rect.x - 100
         self.all_projectiles.add(Projectile(self))
 
     def move_up(self):

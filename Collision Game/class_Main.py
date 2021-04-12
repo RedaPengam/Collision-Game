@@ -38,7 +38,7 @@ while gameIsOn:
     game.player2.all_projectiles.draw(screen)
     
     
-    #Actualisation de la barre de vie des deux joueurs
+    # Actualisation de la barre de vie des deux joueurs
     game.player1.update_health_bar(screen)
     game.player2.update_health_bar(screen)
     
@@ -100,10 +100,10 @@ while gameIsOn:
             game.pressed[event.key] = True
             
             if event.key == pg.K_SPACE:
-                game.player1.launch_projectile()
+                game.player1.launch_projectile1()
                 
             if event.key == pg.K_RETURN:
-                game.player2.launch_projectile()
+                game.player2.launch_projectile2()
                 
         elif event.type == pg.KEYUP:
             game.pressed[event.key] = False
