@@ -20,10 +20,10 @@ class Game:
         self.pressed = {}
         # asteroids creation
         self.all_asteroids =pg.sprite.Group()
-        self.asteroid1 = Asteroid()        
-        self.asteroid2 = Asteroid()
-        self.asteroid3 = Asteroid()        
-        self.asteroid4 = Asteroid()
+        self.asteroid1 = Asteroid(self)        
+        self.asteroid2 = Asteroid(self)
+        self.asteroid3 = Asteroid(self)        
+        self.asteroid4 = Asteroid(self)
         self.all_asteroids.add(self.asteroid1, self.asteroid2, self.asteroid3, self.asteroid4)
         
     
