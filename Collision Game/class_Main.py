@@ -100,10 +100,10 @@ while gameIsOn:
             game.pressed[event.key] = True
             
             if event.key == pg.K_SPACE:
-                game.player1.launch_projectile()
+                game.player1.launch_projectile1()
                 
             if event.key == pg.K_RETURN:
-                game.player2.launch_projectile()
+                game.player2.launch_projectile2()
                 
         elif event.type == pg.KEYUP:
             game.pressed[event.key] = False

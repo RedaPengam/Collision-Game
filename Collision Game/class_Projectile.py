@@ -1,7 +1,7 @@
 import pygame as pg
 
 class Projectile(pg.sprite.Sprite):
-    def __init__(self,class_Player):
+    def __init__(self, class_Player):
         super().__init__()
         
         self.class_Player = class_Player
@@ -18,7 +18,7 @@ class Projectile(pg.sprite.Sprite):
     def move1(self):
         # on fait se déplacer le projectile
         self.rect.x += self.velocity
-        
+
         # verifier si le projectile entre en collision avec un joueur
         for player in self.class_Player.game.check_collision(self, self.class_Player.game.all_players):
             # supprimer le projectile
