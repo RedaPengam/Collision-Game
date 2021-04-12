@@ -45,11 +45,7 @@ class Player(pg.sprite.Sprite):
         pg.draw.rect(surface, bar_color, bar_position)
         
     
-    def launch_projectile1(self): 
-        self.all_projectiles.add(Projectile(self))
-
-    def launch_projectile2(self):
-        Projectile(self).rect.x = self.rect.x - 100
+    def launch_projectile(self): 
         self.all_projectiles.add(Projectile(self))
 
     def move_up(self):
