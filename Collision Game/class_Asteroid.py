@@ -3,13 +3,14 @@ import random as rd
 
 class Asteroid(pg.sprite.Sprite):
 
-    def __init__(self, class_Player):
+    def __init__(self, game):
         super().__init__()
-        self.class_Player = class_Player
+        self.game = game
         self.health = 2
         self.max_health = 2
         self.damage = 10
         self.velocity = 2
+        #self.all_asteroids = pg.sprite.Group()
         self.image = pg.image.load('data/asteroid.png')
         self.image = pg.transform.scale(self.image, (100, 70))
         self.rect = self.image.get_rect()
@@ -45,17 +46,17 @@ class Asteroid(pg.sprite.Sprite):
         if (0 > self.rect.y or self.rect.y > 720) or (0 > self.rect.x or self.rect.x > 1280):
             self.initialPosition()
             
-        '''
+   
         # verifier si l'asteroid entre en collision avec un joueur    
-        for player in self.class_Player.game.check_collision(self, self.class_Player.game.all_players):
+        for player in self.game.check_collision(self, self.game.all_players):
+            
             
             # suprimer l'asteroid
             self.remove()
             
             # infliger des degats aux joueurs
             player.damage(self.damage)
-        '''
-            
+        
     def move2(self):
         self.rect.y += rd.randint(2, 4)
         self.rect.x -= rd.randint(1, 3)
@@ -64,4 +65,4 @@ class Asteroid(pg.sprite.Sprite):
             self.initialPosition()
 
     def remove(self):
-        self.asteroid.remove(self)
+        self.image = pg.kill(self)
