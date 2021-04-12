@@ -25,7 +25,6 @@ class Game:
         self.asteroid3 = Asteroid(self)        
         self.asteroid4 = Asteroid(self)
         self.all_asteroids.add(self.asteroid1, self.asteroid2, self.asteroid3, self.asteroid4)
-        
     
     def check_collision (self, sprite, group):
         return pg.sprite.spritecollide(sprite, group, False, pg.sprite.collide_mask)

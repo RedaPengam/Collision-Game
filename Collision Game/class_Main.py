@@ -4,7 +4,6 @@ from class_Player import Player
 from class_Game import Game
 from class_Asteroid import Asteroid
 from class_Projectile import Projectile
-# ATTENTION les touches pygame sont en qwerty 
 
 pg.init()
 clock = pg.time.Clock()
@@ -37,13 +36,11 @@ while gameIsOn:
     screen.blit(game.asteroid4.image, game.asteroid4.rect)
     game.player1.all_projectiles.draw(screen)
     game.player2.all_projectiles.draw(screen)
-    
-    
-    # Actualisation de la barre de vie des deux joueurs
+        
+    # actualisation de la barre de vie des deux joueurs
     game.player1.update_health_bar(screen)
     game.player2.update_health_bar(screen)
-    
-    
+        
     # déplacment des projectiles
     for projectile in game.player1.all_projectiles:
         Projectile.move1(projectile)
@@ -56,7 +53,6 @@ while gameIsOn:
         
     elif game.pressed.get(pg.K_s) and game.player1.rect.y < 630 :
         game.player1.move_down()
-        
     
     # player2 actions if key pressed
     if game.pressed.get(pg.K_UP) and game.player2.rect.y > 20 :
@@ -66,7 +62,6 @@ while gameIsOn:
         game.player2.move_down()
         game.player2.update_health_bar(screen)
         
-
     # asteroids actions
     game.asteroid1.move1()
     game.asteroid1.rotate1()
@@ -78,12 +73,10 @@ while gameIsOn:
     game.asteroid4.rotate1()
 
     # refreshes the screen
-    #pg.display.flip()
     pg.display.update()
     clock.tick(64) # fps
 
-    print(game.pressed)
-    # looks for key pressed every 1/60 sec
+    # looks for key pressed every 1/fps sec
     for event in pg.event.get():
         # if the player hits the cross window button
         if event.type == pg.QUIT:
