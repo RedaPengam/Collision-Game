@@ -37,6 +37,12 @@ while gameIsOn:
     game.player1.all_projectiles.draw(screen)
     game.player2.all_projectiles.draw(screen)
     
+    
+    #Actualisation de la barre de vie des deux joueurs
+    game.player1.update_health_bar(screen)
+    game.player2.update_health_bar(screen)
+    
+    
     # déplacment des projectiles
     for projectile in game.player1.all_projectiles:
         Projectile.move1(projectile)
@@ -46,14 +52,19 @@ while gameIsOn:
     # player1 actions if key pressed
     if game.pressed.get(pg.K_w) and game.player1.rect.y > 20 :
         game.player1.move_up()
+        
     elif game.pressed.get(pg.K_s) and game.player1.rect.y < 630 :
         game.player1.move_down()
+        
     
     # player2 actions if key pressed
     if game.pressed.get(pg.K_UP) and game.player2.rect.y > 20 :
         game.player2.move_up()
+        game.player2.update_health_bar(screen)
     elif game.pressed.get(pg.K_DOWN) and game.player2.rect.y < 630 :
         game.player2.move_down()
+        game.player2.update_health_bar(screen)
+        
 
     # asteroids actions
     game.asteroid1.move1()
