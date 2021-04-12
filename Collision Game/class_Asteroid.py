@@ -8,7 +8,7 @@ class Asteroid(pg.sprite.Sprite):
         self.game = game
         self.health = 10
         self.max_health = 10
-        self.damage = 1
+        self.damage = 20
         self.velocity = 2
         #self.all_asteroids = pg.sprite.Group()
         self.image = pg.image.load('data/asteroid.png')
@@ -23,10 +23,9 @@ class Asteroid(pg.sprite.Sprite):
         # infliger les dégats
         self.health-= amount
         
-        '''
-        # if self.health <= 0 :
-        #     self.remove()
-            '''
+        if self.health <= 0 :
+            self.remove()
+        
             
             
     def initialPosition(self):
@@ -55,11 +54,12 @@ class Asteroid(pg.sprite.Sprite):
         for aste in self.game.check_collision(self, self.game.all_players):
             
             
-            # suprimer l'asteroid
-            self.remove()
+            # replacer l'asteroid
+            self.initialPosition()
             
             # infliger des degats aux joueurs
             aste.damage(self.damage)
+            
         
     def move2(self):
         self.rect.y += rd.randint(2, 4)
@@ -72,12 +72,12 @@ class Asteroid(pg.sprite.Sprite):
         for aste in self.game.check_collision(self, self.game.all_players):
             
             
-            # suprimer l'asteroid
-            self.remove()
+            # replacer l'asteroid
+            self.initialPosition()
             
             # infliger des degats aux joueurs
             aste.damage(self.damage)
-        
+            
         
     def remove(self):
         self.game.all_asteroids.remove(self)
