@@ -50,7 +50,7 @@ class Player(pg.sprite.Sprite):
 
     def launch_projectile2(self):
         projectile = Projectile(self)
-        projectile.rect.x = self.rect.x - 100
+        projectile.rect.x = self.rect.x - 50
         self.all_projectiles.add(projectile)
 
     def move_up(self):

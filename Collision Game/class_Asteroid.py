@@ -19,7 +19,7 @@ class Asteroid(pg.sprite.Sprite):
         self.angle = 0
     
     def damage(self,amount):
-        #infliger les dégats
+        # infliger les dégats
         self.health-= amount
         # if self.health <= 0 :
         #     self.remove()
@@ -45,14 +45,16 @@ class Asteroid(pg.sprite.Sprite):
         if (0 > self.rect.y or self.rect.y > 720) or (0 > self.rect.x or self.rect.x > 1280):
             self.initialPosition()
             
-        # # verifier si l'asteroid entre en collision avec un joueur    
-        # for player in self.class_Player.game.check_collision(self, self.class_Player.game.all_players):
+        '''
+        # verifier si l'asteroid entre en collision avec un joueur    
+        for player in self.class_Player.game.check_collision(self, self.class_Player.game.all_players):
             
-        #     #suprimer l'asteroid
-        #     self.remove()
+            # suprimer l'asteroid
+            self.remove()
             
-        #     #infliger des degats aux joueurs
-        #     player.damage(self.damage)
+            # infliger des degats aux joueurs
+            player.damage(self.damage)
+        '''
             
     def move2(self):
         self.rect.y += rd.randint(2, 4)
