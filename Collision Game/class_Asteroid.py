@@ -8,7 +8,7 @@ class Asteroid(pg.sprite.Sprite):
         self.game = game
         self.health = 2
         self.max_health = 2
-        self.damage = 10
+        self.damage = 2
         self.velocity = 2
         #self.all_asteroids = pg.sprite.Group()
         self.image = pg.image.load('data/asteroid.png')
