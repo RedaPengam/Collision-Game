@@ -1,7 +1,6 @@
 import pygame as pg
 from class_Player import Player
 from class_Asteroid import Asteroid
-from class_Projectile import Projectile
 
 class Game:
 

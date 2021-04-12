@@ -50,7 +50,7 @@ while gameIsOn:
         Projectile.move2(projectile)
 
     # player1 actions if key pressed
-    if game.pressed.get(pg.K_w) and game.player1.rect.y > 20 :
+    if game.pressed.get(pg.K_z) and game.player1.rect.y > 20 :
         game.player1.move_up()
         
     elif game.pressed.get(pg.K_s) and game.player1.rect.y < 630 :
