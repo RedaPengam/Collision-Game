@@ -4,7 +4,7 @@ import random as rd
 class Asteroid(pg.sprite.Sprite):
 
     def __init__(self, game):
-        super().__init__()
+        super().__init__()      
         self.game = game
         self.health = 2
         self.max_health = 2
@@ -52,7 +52,7 @@ class Asteroid(pg.sprite.Sprite):
             
             
             # suprimer l'asteroid
-            self.remove()
+            player.kill()
             
             # infliger des degats aux joueurs
             player.damage(self.damage)
@@ -69,11 +69,11 @@ class Asteroid(pg.sprite.Sprite):
             
             
             # suprimer l'asteroid
-            self.remove()
+            player.kill()
             
             # infliger des degats aux joueurs
             player.damage(self.damage)
         
 
-    def remove(self):
-        self.game.all_asteroids.remove(self)
+    # def remove(self):
+    #     pg.remove(self)
