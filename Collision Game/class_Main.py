@@ -11,67 +11,50 @@ clock = pg.time.Clock()
 # window and screen
 pg.display.set_caption('Collision Game') # labels the window
 pg.display.set_icon(pg.image.load('data/icon.png')) # creates the icon for the window (has to be 32*32 px)
+
 screen = pg.display.set_mode((1280, 720), pg.RESIZABLE) # creates the screen : top left O(0,0); (width=x_axis, height=y_axis)
+
 background = pg.image.load('data/background.jpg').convert() # creates the background picture variable that will be printed on the screen
 background = pg.transform.scale(background, (1280, 720))
+
+banner = pg.image.load('data/banner.png') # creates the banner that will be printed on the screen
+banner = pg.transform.scale(banner, (800,500))
+banner_rect = banner.get_rect()
+banner_rect.x = screen.get_width()/5 -10
+
+play_button = pg.image.load('data/button.png')
+play_button = pg.transform.scale(play_button, (200,100))
+play_button_rect = play_button.get_rect()
+play_button_rect.x = screen.get_width()/2.5
+play_button_rect.y = screen.get_height()/1.2
 
 # loads the game class
 game = Game()
 
-# for later if we use the mouse
-click = False
-
-gameIsOn = True
-while gameIsOn:
+while True:
     # applies the background
     screen.blit(background, (0, 0))
     
+    # checks if the game started
+    if game.is_playing:
+        game.update(screen, Projectile)
+    # checks if the game hasn't start yet
+    else :
+        # add the welcome screen
+        screen.blit(banner, banner_rect)
+        screen.blit(play_button, play_button_rect)
+
     # applies sprites
-    screen.blit(game.player1.image, game.player1.rect)
-    screen.blit(game.player2.image, game.player2.rect)
-    
+
+    #screen.blit(game.player1.image, game.player1.rect)
+    #screen.blit(game.player2.image, game.player2.rect)
     screen.blit(game.asteroid1.image, game.asteroid1.rect)
     screen.blit(game.asteroid2.image, game.asteroid2.rect)
     screen.blit(game.asteroid3.image, game.asteroid3.rect)
     screen.blit(game.asteroid4.image, game.asteroid4.rect)
-    game.player1.all_projectiles.draw(screen)
-    game.player2.all_projectiles.draw(screen)
-        
-    # actualisation de la barre de vie des deux joueurs
-    game.player1.update_health_bar(screen)
-    game.player2.update_health_bar(screen)
-        
-    # déplacment des projectiles
-    for projectile in game.player1.all_projectiles:
-        Projectile.move1(projectile)
-    for projectile in game.player2.all_projectiles:
-        Projectile.move2(projectile)
-
-    # player1 actions if key pressed
-    if game.pressed.get(pg.K_z) and game.player1.rect.y > 20 :
-        game.player1.move_up()
-        
-    elif game.pressed.get(pg.K_s) and game.player1.rect.y < 630 :
-        game.player1.move_down()
+    #game.player1.all_projectiles.draw(screen)
+    #game.player2.all_projectiles.draw(screen)
     
-    # player2 actions if key pressed
-    if game.pressed.get(pg.K_UP) and game.player2.rect.y > 20 :
-        game.player2.move_up()
-        game.player2.update_health_bar(screen)
-    elif game.pressed.get(pg.K_DOWN) and game.player2.rect.y < 630 :
-        game.player2.move_down()
-        game.player2.update_health_bar(screen)
-        
-    # asteroids actions
-    game.asteroid1.move1()
-    game.asteroid1.rotate1()
-    game.asteroid2.move2()
-    game.asteroid2.rotate2()
-    game.asteroid3.move1()
-    game.asteroid3.rotate2()
-    game.asteroid4.move2()
-    game.asteroid4.rotate1()
-
     # refreshes the screen
     pg.display.update()
     clock.tick(64) # fps
@@ -86,8 +69,10 @@ while gameIsOn:
 
         # detects if the player hit a key from the mouse
         elif event.type == pg.MOUSEBUTTONDOWN:
-            if event.button == 1:
-                click = True
+            # if the mouse is on the play button 
+            if play_button_rect.collidepoint(event.pos) :
+                # start the game
+                game.is_playing = True
 
         #  detects if the player hit a key from the keyboard
         elif event.type == pg.KEYDOWN:
