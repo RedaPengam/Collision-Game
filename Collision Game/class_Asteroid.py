@@ -1,6 +1,5 @@
 import pygame as pg
 import random as rd
-
 class Asteroid(pg.sprite.Sprite):
 
     def __init__(self, class_Player):
