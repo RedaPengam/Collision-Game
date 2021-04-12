@@ -30,13 +30,11 @@ while gameIsOn:
     # applies sprites
     screen.blit(game.player1.image, game.player1.rect)
     screen.blit(game.player2.image, game.player2.rect)
-    '''
+    
     screen.blit(game.asteroid1.image, game.asteroid1.rect)
     screen.blit(game.asteroid2.image, game.asteroid2.rect)
     screen.blit(game.asteroid3.image, game.asteroid3.rect)
     screen.blit(game.asteroid4.image, game.asteroid4.rect)
-        '''
-    game.all_asteroids.draw(screen)
     game.player1.all_projectiles.draw(screen)
     game.player2.all_projectiles.draw(screen)
     
