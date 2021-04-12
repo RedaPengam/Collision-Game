@@ -15,6 +15,14 @@ class Asteroid(pg.sprite.Sprite):
         self.rect.y = 0
         self.origin_image = self.image
         self.angle = 0
+    
+    def damage(self,amount):
+        #infliger les dégats
+        self.health-= amount
+        # if self.health <= 0 :
+        #     self.remove()
+        
+           
 
     def initialPosition(self):
         self.rect.x = rd.randint(0, 1280)
