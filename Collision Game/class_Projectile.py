@@ -3,7 +3,6 @@ import pygame as pg
 class Projectile(pg.sprite.Sprite):
     def __init__(self, class_Player):
         super().__init__()
-        
         self.class_Player = class_Player
         self.velocity = 5
         self.image = pg.image.load('data/laser.png')
@@ -58,7 +57,7 @@ class Projectile(pg.sprite.Sprite):
             self.remove()
             
             # infliger des dégats aux asteroids
-            # asteroid.damage(self.class_Player.attack)
+            player.damage(self.class_Player.attack)
             
         # le projectile sort de l'écran : on le supprime
         if self.rect.x > 1280 :
