@@ -10,6 +10,7 @@ class Projectile(pg.sprite.Sprite):
         self.image = pg.transform.scale(self.image, (50, 50))
         self.rect = self.image.get_rect()
         self.rect.x = class_Player.rect.x + 100
+        #self.rect.x = class_Player.rect.x - 100
         self.rect.y = class_Player.rect.y
     
     
@@ -36,7 +37,7 @@ class Projectile(pg.sprite.Sprite):
             self.remove()
             
             #infliger des dégats aux asteroids
-            asteroid.damage(self.class_Player.attack)
+            # asteroid.damage(self.class_Player.attack)
             
         # le projectile sort de l'écran : on le supprime
         if self.rect.x > 1280 :
@@ -49,4 +50,23 @@ class Projectile(pg.sprite.Sprite):
         self.rect.x -= self.velocity
         # le projectile sort de l'écran: on le supprime
         if self.rect.x < -50:
+            self.remove()
+            
+        # verifier si le projectile entre en collision avec un joueur
+        for player in self.class_Player.game.check_collision(self, self.class_Player.game.all_players):
+            #suprimer le projectile
+            self.remove()
+            
+            #infliger des dégats aux joueurs 
+            player.damage(self.class_Player.attack)
+            
+        for asteroid in self.class_Player.game.check_collision(self, self.class_Player.game.all_asteroids):
+            #suprimer le projectile
+            self.remove()
+            
+            #infliger des dégats aux asteroids
+            # asteroid.damage(self.class_Player.attack)
+            
+        # le projectile sort de l'écran : on le supprime
+        if self.rect.x > 1280 :
             self.remove()
