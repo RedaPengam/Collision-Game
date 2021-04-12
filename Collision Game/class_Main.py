@@ -102,7 +102,7 @@ while gameIsOn:
             if event.key == pg.K_SPACE:
                 game.player1.launch_projectile()
                 
-            if event.key == pg.K_RCTRL:
+            if event.key == pg.K_RETURN:
                 game.player2.launch_projectile()
                 
         elif event.type == pg.KEYUP:
