@@ -52,6 +52,8 @@ class Player(pg.sprite.Sprite):
         projectile = Projectile(self)
         projectile.rect.x = self.rect.x - 50
         self.all_projectiles.add(projectile)
+        projectile.image =pg.image.load('data/laser2.png')
+        projectile.image = pg.transform.scale(projectile.image, (50, 50))
 
     def move_up(self):
         self.rect.y -= self.velocity 
