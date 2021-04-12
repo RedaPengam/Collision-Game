@@ -44,6 +44,7 @@ class Player(pg.sprite.Sprite):
         pg.draw.rect(surface, back_bar_color, back_bar_position)
         pg.draw.rect(surface, bar_color, bar_position)
     
+<<<<<<< Updated upstream
     def launch_projectile1(self): 
         projectile = Projectile(self)
         self.all_projectiles.add(projectile)
@@ -52,6 +53,11 @@ class Player(pg.sprite.Sprite):
         projectile = Projectile(self)
         projectile.rect.x = self.rect.x - 100
         self.all_projectiles.add(projectile)
+=======
+    def launch_projectile(self): 
+        self.all_projectiles.add(Projectile(self))
+
+>>>>>>> Stashed changes
 
     def move_up(self):
         self.rect.y -= self.velocity 
