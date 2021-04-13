@@ -21,7 +21,7 @@ class Game:
         # keys currently pressed
         self.pressed = {}
         # asteroids creation
-        self.all_asteroids =pg.sprite.Group()
+        self.all_asteroids = pg.sprite.Group()
         self.asteroid1 = Asteroid(self)        
         self.asteroid2 = Asteroid(self)
         self.asteroid3 = Asteroid(self)        
@@ -35,6 +35,10 @@ class Game:
         # applies sprites
         screen.blit(self.player1.image, self.player1.rect)
         screen.blit(self.player2.image, self.player2.rect)
+        screen.blit(self.asteroid1.image, self.asteroid1.rect)
+        screen.blit(self.asteroid2.image, self.asteroid2.rect)
+        screen.blit(self.asteroid3.image, self.asteroid3.rect)
+        screen.blit(self.asteroid4.image, self.asteroid4.rect)
         self.player1.all_projectiles.draw(screen)
         self.player2.all_projectiles.draw(screen)
 
@@ -42,7 +46,7 @@ class Game:
         self.player1.update_health_bar(screen)
         self.player2.update_health_bar(screen)
             
-        # déplacment des projectiles
+        # déplacement des projectiles
         for projectile in self.player1.all_projectiles:
             Projectile.move1(projectile)
         for projectile in self.player2.all_projectiles:

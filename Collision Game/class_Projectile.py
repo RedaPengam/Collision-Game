@@ -2,8 +2,7 @@ import pygame as pg
 
 class Projectile(pg.sprite.Sprite):
     def __init__(self, class_Player):
-        super().__init__()
-        
+        super().__init__()        
         self.class_Player = class_Player
         self.velocity = 5
         self.image = pg.image.load('data/laser.png')
@@ -23,14 +22,12 @@ class Projectile(pg.sprite.Sprite):
         for player in self.class_Player.game.check_collision(self, self.class_Player.game.all_players):
             # supprimer le projectile
             self.remove()
-            
             # infliger des dégats aux joueurs 
             player.damage(self.class_Player.attack)
             
         for asteroid in self.class_Player.game.check_collision(self, self.class_Player.game.all_asteroids):
             # supprimer le projectile
-            self.remove()
-            
+            self.remove()            
             # infliger des dégats aux asteroids
             asteroid.damage(self.class_Player.attack)
             
@@ -48,15 +45,13 @@ class Projectile(pg.sprite.Sprite):
         # verifier si le projectile entre en collision avec un joueur
         for player in self.class_Player.game.check_collision(self, self.class_Player.game.all_players):
             # supprimer le projectile
-            self.remove()
-            
+            self.remove()            
             # infliger des dégats aux joueurs 
             player.damage(self.class_Player.attack)
             
         for asteroid in self.class_Player.game.check_collision(self, self.class_Player.game.all_asteroids):
             # supprimer le projectile
-            self.remove()
-            
+            self.remove()            
             # infliger des dégats aux asteroids
             asteroid.damage(self.class_Player.attack)
             

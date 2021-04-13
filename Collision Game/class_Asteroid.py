@@ -11,7 +11,7 @@ class Asteroid(pg.sprite.Sprite):
         self.dommage = 20
         self.velocity = 2
         #self.all_asteroids = pg.sprite.Group()
-        self.image = pg.image.load('data/asteroid.png')
+        self.image = pg.image.load('data/asteroide.png')
         self.image = pg.transform.scale(self.image, (100, 70))
         self.rect = self.image.get_rect()
         self.rect.x = rd.randint(0, 1280)
@@ -30,7 +30,7 @@ class Asteroid(pg.sprite.Sprite):
     def initialPosition(self):
         self.rect.x = rd.randint(0, 1280)
         self.rect.y = 0
-        self.health=20
+        self.health = self.max_health
 
     def rotate1(self):
         self.angle += rd.randint(1, 5)

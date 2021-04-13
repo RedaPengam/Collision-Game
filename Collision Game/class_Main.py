@@ -28,6 +28,22 @@ play_button_rect = play_button.get_rect()
 play_button_rect.x = screen.get_width()/2.5
 play_button_rect.y = screen.get_height()/1.2
 
+replay_button = pg.image.load('data/button.png')
+replay_button = pg.transform.scale(replay_button, (200,100))
+replay_button_rect = replay_button.get_rect()
+replay_button_rect.x = screen.get_width()/2.5
+replay_button_rect.y = screen.get_height()/1.2
+
+gameover1_banner = pg.image.load('data/gameover1.png') # creates the banner that will be printed on the screen if the player 1 wins
+gameover1_banner = pg.transform.scale(gameover1_banner, (800,500))
+gameover1_banner_rect = gameover1_banner.get_rect()
+gameover1_banner_rect.x = screen.get_width()/5 -10
+
+gameover2_banner = pg.image.load('data/gameover2.png') # creates the banner that will be printed on the screen if the player 2 wins
+gameover2_banner = pg.transform.scale(gameover2_banner, (800,500))
+gameover2_banner_rect = gameover2_banner.get_rect()
+gameover2_banner_rect.x = screen.get_width()/5 -10
+
 # loads the game class
 game = Game()
 
@@ -44,15 +60,33 @@ while True:
         screen.blit(banner, banner_rect)
         screen.blit(play_button, play_button_rect)
 
-    # applies sprites
-    screen.blit(game.asteroid1.image, game.asteroid1.rect)
-    screen.blit(game.asteroid2.image, game.asteroid2.rect)
-    screen.blit(game.asteroid3.image, game.asteroid3.rect)
-    screen.blit(game.asteroid4.image, game.asteroid4.rect)
+    # checks if player2 is dead
+    if game.player2.health <= 0:
+        game.is_playing = False
+        screen.blit(gameover1_banner, gameover1_banner_rect)
+        screen.blit(replay_button, replay_button_rect)
+        for projectile in game.player1.all_projectiles:
+            Projectile.remove(projectile)
+        for projectile in game.player2.all_projectiles:
+            Projectile.remove(projectile)
+        for asteroide in game.all_asteroids:
+            Asteroid.remove(asteroide)
+    
+    # checks if player1 is dead
+    elif game.player1.health <= 0:
+        game.is_playing = False
+        screen.blit(gameover2_banner, gameover2_banner_rect)
+        screen.blit(replay_button, replay_button_rect)
+        for projectile in game.player1.all_projectiles:
+            Projectile.remove(projectile)
+        for projectile in game.player2.all_projectiles:
+            Projectile.remove(projectile)
+        for asteroide in game.all_asteroids:
+            Asteroid.remove(asteroide)
         
     # refreshes the screen
     pg.display.update()
-    clock.tick(64) # fps
+    clock.tick(60) # fps
 
     # looks for key pressed every 1/fps sec
     for event in pg.event.get():
@@ -68,12 +102,20 @@ while True:
             if play_button_rect.collidepoint(event.pos) :
                 # starts the game
                 game.is_playing = True
+            
+            elif replay_button_rect.collidepoint(event.pos) :
+                game.player1.rect.y = 320 
+                game.player1.health = game.player1.health.max_health 
+                game.player1.rect.y = 320 
+                game.player1.health = game.player1.health.max_health
 
         # detects if the player hit a key from the keyboard
         elif event.type == pg.KEYDOWN:
             game.pressed[event.key] = True
+            
             if event.key == pg.K_SPACE:
                 game.player1.launch_projectile1()
+                
             if event.key == pg.K_RETURN:
                 game.player2.launch_projectile2()
         
@@ -81,7 +123,3 @@ while True:
         elif event.type == pg.KEYUP:
             game.pressed[event.key] = False
     
-
-
-
-

@@ -22,10 +22,10 @@ class Player(pg.sprite.Sprite):
         self.health -= amount
         
         # vérifier qu'il lui reste des points de vie 
-        if self.health <= 0:
+        #if self.health <= 0:
             # réappatraitre comme un nouveau monstre 
-            self.rect.y = 320 
-            self.health = self.max_health 
+            #self.rect.y = 320 
+            #self.health = self.max_health 
     
     def update_health_bar (self, surface):
         # definir une couleur pour notre jauge de vie 
