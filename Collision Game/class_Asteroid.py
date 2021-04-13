@@ -25,10 +25,12 @@ class Asteroid(pg.sprite.Sprite):
         
         if self.health <= 0 :
             self.initialPosition()
+            
                  
     def initialPosition(self):
         self.rect.x = rd.randint(0, 1280)
         self.rect.y = 0
+        self.health=20
 
     def rotate1(self):
         self.angle += rd.randint(1, 5)
