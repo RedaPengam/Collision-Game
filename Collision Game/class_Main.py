@@ -49,7 +49,8 @@ while True:
         elif event.type == pg.MOUSEBUTTONDOWN:
             # si on clique sur le bouton play, lancement du jeu
             if game.play_button_rect.collidepoint(event.pos):
-                game.is_playing = True            
+                game.is_playing = True
+                # réinitialise la vie et la position des joueurs         
                 game.player1.rect.y = 320 
                 game.player1.health = game.player1.max_health 
                 game.player1.rect.y = 320 
