@@ -20,9 +20,8 @@ class Asteroid(pg.sprite.Sprite):
         self.angle = 0
     
     def damage(self,amount):
-        # infliger les dégats
+        # inflige les dégats
         self.health-= amount
-        
         if self.health <= 0 :
             self.initialPosition()
                              
@@ -44,27 +43,27 @@ class Asteroid(pg.sprite.Sprite):
     def move1(self):
         self.rect.y += rd.randint(2, 4)
         self.rect.x += rd.randint(1, 3)
-        # asteroid off screen
+        # si l'astéroïde est hors écran
         if (0 > self.rect.y or self.rect.y > 720) or (0 > self.rect.x or self.rect.x > 1280):
             self.initialPosition()            
-        # verifier si l'asteroide entre en collision avec un joueur    
+        # verifie si l'asteroïde entre en collision avec un joueur    
         for aste in self.game.check_collision(self, self.game.all_players):
-            # replacer l'asteroide
+            # replace l'asteroide
             self.initialPosition()            
-            # infliger des degats aux joueurs
+            # inflige des dégats aux joueurs
             aste.damage(self.dommage)
             
     def move2(self):
         self.rect.y += rd.randint(2, 4)
         self.rect.x -= rd.randint(1, 3)
-        # asteroid off screen       
+        # si l'astéroïd est hors écran      
         if (0 > self.rect.y or self.rect.y > 720) or (0 > self.rect.x or self.rect.x > 1280):
             self.initialPosition()
-        # verifier si l'asteroide entre en collision avec un joueur    
+        # verifie si l'asteroïde entre en collision avec un joueur   
         for aste in self.game.check_collision(self, self.game.all_players):
-            # replacer l'asteroide
+            # replace l'asteroide
             self.initialPosition()
-            # infliger des degats aux joueurs
+            # inflige des dégats aux joueurs
             aste.damage(self.dommage)  
         
     def remove(self):

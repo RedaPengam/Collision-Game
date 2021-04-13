@@ -37,9 +37,6 @@ class Game:
         self.replay_button_rect.x = screen.get_width()/2.5
         self.replay_button_rect.y = screen.get_height()/1.2
         
-        # definir si notre jeu a commencé ou non
-        self.is_playing = False
-
         # création des joueurs
         self.all_players = pg.sprite.Group()
         self.player1 = Player(self)
@@ -53,9 +50,6 @@ class Game:
         self.player2.image = pg.image.load('data/joueur2.png')
         self.player2.image = pg.transform.scale(self.player2.image, (100, 70))
 
-        # création du dictionnaire des touches pressées en live
-        self.pressed = {}
-
         # création des astéroïdes
         self.all_asteroids = pg.sprite.Group()
         self.asteroid1 = Asteroid(self)        
@@ -63,6 +57,12 @@ class Game:
         self.asteroid3 = Asteroid(self)        
         self.asteroid4 = Asteroid(self)
         self.all_asteroids.add(self.asteroid1, self.asteroid2, self.asteroid3, self.asteroid4)
+        
+        # création du dictionnaire des touches pressées en live
+        self.pressed = {}
+
+        # définit si le jeu est lancé ou non
+        self.is_playing = False
     
     def check_collision (self, sprite, group):
         return pg.sprite.spritecollide(sprite, group, False, pg.sprite.collide_mask)
