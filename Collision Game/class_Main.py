@@ -58,6 +58,7 @@ while True:
                 game.player2.health = game.player2.max_health
                 game.player2.update_health_bar(screen)
                 
+                
         # actions à l'enfoncement d'une touche clavier
         elif event.type == pg.KEYDOWN:
             game.pressed[event.key] = True
