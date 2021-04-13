@@ -30,7 +30,7 @@ class Game:
         self.play_button_rect = self.play_button.get_rect()
         self.play_button_rect.x = screen.get_width()/2.5
         self.play_button_rect.y = screen.get_height()/1.2
-        
+
         # création des joueurs
         self.all_players = pg.sprite.Group()
         self.player1 = Player(self)
@@ -40,7 +40,6 @@ class Game:
 
         # corrige la position initiale du joueur 2
         self.player2.rect.x = 1160
-        self.player2.rect.y = 400
         self.player2.image = pg.image.load('data/joueur2.png')
         self.player2.image = pg.transform.scale(self.player2.image, (100, 70))
 

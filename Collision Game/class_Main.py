@@ -26,12 +26,12 @@ while True:
     # affiche l'écran de menu sinon
     else :
         game.menu_screen(screen)
+    # affiche l'écran gameover1 si le joueur 1 meurt
+    if game.player1.health <= 0:
+        game.gameover1_screen(screen, Projectile)
     # affiche l'écran gameover2 si le joueur 2 meurt
     if game.player2.health <= 0:
         game.gameover2_screen(screen, Projectile)
-    # affiche l'écran gameover1 si le joueur 1 meurt
-    elif game.player1.health <= 0:
-        game.gameover1_screen(screen, Projectile)
         
     # rafraichit l'écran à 60 fps
     pg.display.update()
@@ -52,10 +52,12 @@ while True:
                 game.is_playing = True
                 # réinitialise la vie et la position des joueurs         
                 game.player1.rect.y = 320 
-                game.player1.health = game.player1.max_health 
-                game.player1.rect.y = 320 
                 game.player1.health = game.player1.max_health
-
+                game.player1.update_health_bar(screen)
+                game.player2.rect.y = 320 
+                game.player2.health = game.player2.max_health
+                game.player2.update_health_bar(screen)
+                
         # actions à l'enfoncement d'une touche clavier
         elif event.type == pg.KEYDOWN:
             game.pressed[event.key] = True
