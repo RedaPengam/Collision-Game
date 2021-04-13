@@ -14,13 +14,13 @@ pg.display.set_icon(pg.image.load('data/icon.png')) # crée une icône pour la f
 
 screen = pg.display.set_mode((1280, 720), pg.RESIZABLE) # crée l'écran avec la taille en pixel
 
-# crée une insatnce de jeu 
+# crée une instance de jeu 
 game = Game(screen)
 
 while True:
     # affiche le fond d'écran
-    screen.blit(game.background, (0, 0))        
-    # affiche l'écran de jeu si en jeu
+    screen.blit(game.background, (0, 0))  
+    # affiche l'écran de jeu si le jeu est lancé
     if game.is_playing :
         game.ingame_screen(screen, Projectile)
     # affiche l'écran de menu sinon
@@ -49,22 +49,19 @@ while True:
         elif event.type == pg.MOUSEBUTTONDOWN:
             # si on clique sur le bouton play, lancement du jeu
             if game.play_button_rect.collidepoint(event.pos):
-                game.is_playing = True
-            
-            if game.replay_button_rect.collidepoint(event.pos):
+                game.is_playing = True            
                 game.player1.rect.y = 320 
                 game.player1.health = game.player1.max_health 
                 game.player1.rect.y = 320 
                 game.player1.health = game.player1.max_health
-                game.is_playing = True
 
         # actions à l'enfoncement d'une touche clavier
         elif event.type == pg.KEYDOWN:
             game.pressed[event.key] = True
-            
+            # touche espace : tir du joueur 1
             if event.key == pg.K_SPACE:
                 game.player1.launch_projectile1()
-                
+            # touche entrée : tir du joueur 2
             if event.key == pg.K_RETURN:
                 game.player2.launch_projectile2()
         

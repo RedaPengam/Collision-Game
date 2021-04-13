@@ -5,7 +5,7 @@ from class_Asteroid import Asteroid
 class Game:
 
     def __init__(self, screen):
-        # Création des fonds d'écran
+        # création des fonds d'écran
         self.background = pg.image.load('data/background.jpg').convert() # creates the background picture variable that will be printed on the screen
         self.background = pg.transform.scale(self.background, (1280, 720))
 
@@ -24,18 +24,12 @@ class Game:
         self.gameover2_banner_rect = self.gameover2_banner.get_rect()
         self.gameover2_banner_rect.x = screen.get_width()/5 -10
 
-        # Création des boutons
+        # création du bouton play
         self.play_button = pg.image.load('data/button.png')
         self.play_button = pg.transform.scale(self.play_button, (200,100))
         self.play_button_rect = self.play_button.get_rect()
         self.play_button_rect.x = screen.get_width()/2.5
         self.play_button_rect.y = screen.get_height()/1.2
-
-        self.replay_button = pg.image.load('data/button.png')
-        self.replay_button = pg.transform.scale(self.replay_button, (200,100))
-        self.replay_button_rect = self.replay_button.get_rect()
-        self.replay_button_rect.x = screen.get_width()/2.5
-        self.replay_button_rect.y = screen.get_height()/1.2
         
         # création des joueurs
         self.all_players = pg.sprite.Group()
@@ -104,7 +98,7 @@ class Game:
             self.player2.move_down()
             self.player2.update_health_bar(screen)
 
-        # mise en mouvement des astéroïds
+        # mise en mouvement des astéroïdes
         self.asteroid1.move1()
         self.asteroid1.rotate1()
         self.asteroid2.move2()
@@ -122,7 +116,7 @@ class Game:
         self.is_playing = False
         # affiche l'écran gameover1
         screen.blit(self.gameover1_banner, self.gameover1_banner_rect)
-        screen.blit(self.replay_button, self.replay_button_rect)
+        screen.blit(self.play_button, self.play_button_rect)
         # retire tous les sprites de l'écran
         for projectile in self.player1.all_projectiles:
             Projectile.remove(projectile)
@@ -135,7 +129,7 @@ class Game:
         self.is_playing = False        
         # affiche l'écran gameover2
         screen.blit(self.gameover2_banner, self.gameover2_banner_rect)
-        screen.blit(self.replay_button, self.replay_button_rect)
+        screen.blit(self.play_button, self.play_button_rect)
         # retire tous les sprites de l'écran
         for projectile in self.player1.all_projectiles:
             Projectile.remove(projectile)
