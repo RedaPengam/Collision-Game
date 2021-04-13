@@ -45,16 +45,11 @@ while True:
         screen.blit(play_button, play_button_rect)
 
     # applies sprites
-
-    #screen.blit(game.player1.image, game.player1.rect)
-    #screen.blit(game.player2.image, game.player2.rect)
     screen.blit(game.asteroid1.image, game.asteroid1.rect)
     screen.blit(game.asteroid2.image, game.asteroid2.rect)
     screen.blit(game.asteroid3.image, game.asteroid3.rect)
     screen.blit(game.asteroid4.image, game.asteroid4.rect)
-    #game.player1.all_projectiles.draw(screen)
-    #game.player2.all_projectiles.draw(screen)
-    
+        
     # refreshes the screen
     pg.display.update()
     clock.tick(64) # fps
@@ -71,19 +66,18 @@ while True:
         elif event.type == pg.MOUSEBUTTONDOWN:
             # if the mouse is on the play button 
             if play_button_rect.collidepoint(event.pos) :
-                # start the game
+                # starts the game
                 game.is_playing = True
 
-        #  detects if the player hit a key from the keyboard
+        # detects if the player hit a key from the keyboard
         elif event.type == pg.KEYDOWN:
             game.pressed[event.key] = True
-            
             if event.key == pg.K_SPACE:
                 game.player1.launch_projectile1()
-                
             if event.key == pg.K_RETURN:
                 game.player2.launch_projectile2()
-                
+        
+        # detects if the player releases a key from the keyboard
         elif event.type == pg.KEYUP:
             game.pressed[event.key] = False
     
