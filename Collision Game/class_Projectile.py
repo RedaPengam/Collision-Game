@@ -32,7 +32,7 @@ class Projectile(pg.sprite.Sprite):
             self.remove()
             
             # infliger des dégats aux asteroids
-            # asteroid.damage(self.class_Player.attack)
+            asteroid.damage(self.class_Player.attack)
             
         # le projectile sort de l'écran : on le supprime
         if self.rect.x > 1280 :
