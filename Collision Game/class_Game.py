@@ -4,7 +4,40 @@ from class_Asteroid import Asteroid
 
 class Game:
 
-    def __init__(self):
+    def __init__(self, screen):
+
+        # Création des fonds d'écran
+        self.background = pg.image.load('data/background.jpg').convert() # creates the background picture variable that will be printed on the screen
+        self.background = pg.transform.scale(self.background, (1280, 720))
+
+        self.banner = pg.image.load('data/banner.png') # creates the banner that will be printed on the screen
+        self.banner = pg.transform.scale(self.banner, (800,500))
+        self.banner_rect = self.banner.get_rect()
+        self.banner_rect.x = screen.get_width()/5 -10
+
+        self.gameover1_banner = pg.image.load('data/gameover1.png') # creates the banner that will be printed on the screen if the player 1 wins
+        self.gameover1_banner = pg.transform.scale(self.gameover1_banner, (800,500))
+        self.gameover1_banner_rect = self.gameover1_banner.get_rect()
+        self.gameover1_banner_rect.x = screen.get_width()/5 -10
+
+        self.gameover2_banner = pg.image.load('data/gameover2.png') # creates the banner that will be printed on the screen if the player 2 wins
+        self.gameover2_banner = pg.transform.scale(self.gameover2_banner, (800,500))
+        self.gameover2_banner_rect = self.gameover2_banner.get_rect()
+        self.gameover2_banner_rect.x = screen.get_width()/5 -10
+
+        # Création des boutons
+        self.play_button = pg.image.load('data/button.png')
+        self.play_button = pg.transform.scale(self.play_button, (200,100))
+        self.play_button_rect = self.play_button.get_rect()
+        self.play_button_rect.x = screen.get_width()/2.5
+        self.play_button_rect.y = screen.get_height()/1.2
+
+        self.replay_button = pg.image.load('data/button.png')
+        self.replay_button = pg.transform.scale(self.replay_button, (200,100))
+        self.replay_button_rect = self.replay_button.get_rect()
+        self.replay_button_rect.x = screen.get_width()/2.5
+        self.replay_button_rect.y = screen.get_height()/1.2
+        
         # definir si notre jeu a commencé ou non
         self.is_playing = False
         # players creation
@@ -32,7 +65,7 @@ class Game:
         return pg.sprite.spritecollide(sprite, group, False, pg.sprite.collide_mask)
 
     def update(self, screen, Projectile):
-        # applies sprites
+        # Affiche les sprites à l'écran
         screen.blit(self.player1.image, self.player1.rect)
         screen.blit(self.player2.image, self.player2.rect)
         screen.blit(self.asteroid1.image, self.asteroid1.rect)

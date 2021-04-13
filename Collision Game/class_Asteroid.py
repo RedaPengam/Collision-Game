@@ -25,8 +25,7 @@ class Asteroid(pg.sprite.Sprite):
         
         if self.health <= 0 :
             self.initialPosition()
-            
-                 
+                             
     def initialPosition(self):
         self.rect.x = rd.randint(0, 1280)
         self.rect.y = 0
@@ -48,13 +47,10 @@ class Asteroid(pg.sprite.Sprite):
         # asteroid off screen
         if (0 > self.rect.y or self.rect.y > 720) or (0 > self.rect.x or self.rect.x > 1280):
             self.initialPosition()            
-        
         # verifier si l'asteroide entre en collision avec un joueur    
         for aste in self.game.check_collision(self, self.game.all_players):
-                        
             # replacer l'asteroide
-            self.initialPosition()
-            
+            self.initialPosition()            
             # infliger des degats aux joueurs
             aste.damage(self.dommage)
             
@@ -64,13 +60,10 @@ class Asteroid(pg.sprite.Sprite):
         # asteroid off screen       
         if (0 > self.rect.y or self.rect.y > 720) or (0 > self.rect.x or self.rect.x > 1280):
             self.initialPosition()
-           
         # verifier si l'asteroide entre en collision avec un joueur    
         for aste in self.game.check_collision(self, self.game.all_players):
-            
             # replacer l'asteroide
             self.initialPosition()
-            
             # infliger des degats aux joueurs
             aste.damage(self.dommage)  
         

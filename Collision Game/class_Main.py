@@ -8,63 +8,33 @@ from class_Projectile import Projectile
 pg.init()
 clock = pg.time.Clock()
 
-# window and screen
+# Création de la fenêtre et de l'écran
 pg.display.set_caption('Collision Game') # labels the window
 pg.display.set_icon(pg.image.load('data/icon.png')) # creates the icon for the window (has to be 32*32 px)
 
 screen = pg.display.set_mode((1280, 720), pg.RESIZABLE) # creates the screen : top left O(0,0); (width=x_axis, height=y_axis)
 
-background = pg.image.load('data/background.jpg').convert() # creates the background picture variable that will be printed on the screen
-background = pg.transform.scale(background, (1280, 720))
-
-banner = pg.image.load('data/banner.png') # creates the banner that will be printed on the screen
-banner = pg.transform.scale(banner, (800,500))
-banner_rect = banner.get_rect()
-banner_rect.x = screen.get_width()/5 -10
-
-play_button = pg.image.load('data/button.png')
-play_button = pg.transform.scale(play_button, (200,100))
-play_button_rect = play_button.get_rect()
-play_button_rect.x = screen.get_width()/2.5
-play_button_rect.y = screen.get_height()/1.2
-
-replay_button = pg.image.load('data/button.png')
-replay_button = pg.transform.scale(replay_button, (200,100))
-replay_button_rect = replay_button.get_rect()
-replay_button_rect.x = screen.get_width()/2.5
-replay_button_rect.y = screen.get_height()/1.2
-
-gameover1_banner = pg.image.load('data/gameover1.png') # creates the banner that will be printed on the screen if the player 1 wins
-gameover1_banner = pg.transform.scale(gameover1_banner, (800,500))
-gameover1_banner_rect = gameover1_banner.get_rect()
-gameover1_banner_rect.x = screen.get_width()/5 -10
-
-gameover2_banner = pg.image.load('data/gameover2.png') # creates the banner that will be printed on the screen if the player 2 wins
-gameover2_banner = pg.transform.scale(gameover2_banner, (800,500))
-gameover2_banner_rect = gameover2_banner.get_rect()
-gameover2_banner_rect.x = screen.get_width()/5 -10
-
 # loads the game class
-game = Game()
+game = Game(screen)
 
 while True:
     # applies the background
-    screen.blit(background, (0, 0))
-    
+    screen.blit(game.background, (0, 0))
+        
     # checks if the game started
-    if game.is_playing:
+    if game.is_playing :
         game.update(screen, Projectile)
     # checks if the game hasn't start yet
     else :
         # add the welcome screen
-        screen.blit(banner, banner_rect)
-        screen.blit(play_button, play_button_rect)
+        screen.blit(game.banner, game.banner_rect)
+        screen.blit(game.play_button, game.play_button_rect)
 
     # checks if player2 is dead
     if game.player2.health <= 0:
         game.is_playing = False
-        screen.blit(gameover1_banner, gameover1_banner_rect)
-        screen.blit(replay_button, replay_button_rect)
+        screen.blit(game.gameover1_banner, game.gameover1_banner_rect)
+        screen.blit(game.replay_button, game.replay_button_rect)
         for projectile in game.player1.all_projectiles:
             Projectile.remove(projectile)
         for projectile in game.player2.all_projectiles:
@@ -75,8 +45,8 @@ while True:
     # checks if player1 is dead
     elif game.player1.health <= 0:
         game.is_playing = False
-        screen.blit(gameover2_banner, gameover2_banner_rect)
-        screen.blit(replay_button, replay_button_rect)
+        screen.blit(game.gameover2_banner, game.gameover2_banner_rect)
+        screen.blit(game.replay_button, game.replay_button_rect)
         for projectile in game.player1.all_projectiles:
             Projectile.remove(projectile)
         for projectile in game.player2.all_projectiles:
@@ -99,11 +69,11 @@ while True:
         # detects if the player hit a key from the mouse
         elif event.type == pg.MOUSEBUTTONDOWN:
             # if the mouse is on the play button 
-            if play_button_rect.collidepoint(event.pos) :
+            if game.play_button_rect.collidepoint(event.pos) :
                 # starts the game
                 game.is_playing = True
             
-            elif replay_button_rect.collidepoint(event.pos) :
+            elif game.replay_button_rect.collidepoint(event.pos) :
                 game.player1.rect.y = 320 
                 game.player1.health = game.player1.health.max_health 
                 game.player1.rect.y = 320 
