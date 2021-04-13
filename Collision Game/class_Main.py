@@ -18,41 +18,21 @@ screen = pg.display.set_mode((1280, 720), pg.RESIZABLE) # creates the screen : t
 game = Game(screen)
 
 while True:
-    # applies the background
+    # Affiche le fond d'écran pour l'écran
     screen.blit(game.background, (0, 0))
         
-    # checks if the game started
+    # Affiche l'écran de jeu si en jeu
     if game.is_playing :
-        game.update(screen, Projectile)
-    # checks if the game hasn't start yet
+        game.ingame_screen(screen, Projectile)
+    # Affiche l'écran de menu sinon
     else :
-        # add the welcome screen
-        screen.blit(game.banner, game.banner_rect)
-        screen.blit(game.play_button, game.play_button_rect)
-
-    # checks if player2 is dead
+        game.menu_screen(screen)
+    # Affiche l'écran Game Over 2 si le joueur 2 meurt
     if game.player2.health <= 0:
-        game.is_playing = False
-        screen.blit(game.gameover1_banner, game.gameover1_banner_rect)
-        screen.blit(game.replay_button, game.replay_button_rect)
-        for projectile in game.player1.all_projectiles:
-            Projectile.remove(projectile)
-        for projectile in game.player2.all_projectiles:
-            Projectile.remove(projectile)
-        for asteroide in game.all_asteroids:
-            Asteroid.remove(asteroide)
-    
-    # checks if player1 is dead
+        game.gameover2_screen(screen, Projectile)
+    # Affiche l'écran Game Over 1 si le joueur 1 meurt
     elif game.player1.health <= 0:
-        game.is_playing = False
-        screen.blit(game.gameover2_banner, game.gameover2_banner_rect)
-        screen.blit(game.replay_button, game.replay_button_rect)
-        for projectile in game.player1.all_projectiles:
-            Projectile.remove(projectile)
-        for projectile in game.player2.all_projectiles:
-            Projectile.remove(projectile)
-        for asteroide in game.all_asteroids:
-            Asteroid.remove(asteroide)
+        game.gameover1_screen(screen, Projectile)
         
     # refreshes the screen
     pg.display.update()

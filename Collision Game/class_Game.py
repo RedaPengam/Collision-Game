@@ -64,7 +64,7 @@ class Game:
     def check_collision (self, sprite, group):
         return pg.sprite.spritecollide(sprite, group, False, pg.sprite.collide_mask)
 
-    def update(self, screen, Projectile):
+    def ingame_screen(self, screen, Projectile):
         # Affiche les sprites à l'écran
         screen.blit(self.player1.image, self.player1.rect)
         screen.blit(self.player2.image, self.player2.rect)
@@ -98,7 +98,7 @@ class Game:
         elif self.pressed.get(pg.K_DOWN) and self.player2.rect.y < 630 :
             self.player2.move_down()
             self.player2.update_health_bar(screen)
-            
+
         # asteroids actions
         self.asteroid1.move1()
         self.asteroid1.rotate1()
@@ -109,5 +109,28 @@ class Game:
         self.asteroid4.move2()
         self.asteroid4.rotate1()
 
+    def menu_screen(self, screen):
+        screen.blit(self.banner, self.banner_rect)
+        screen.blit(self.play_button, self.play_button_rect)
 
+    def gameover1_screen(self, screen, Projectile): 
+        self.is_playing = False
+        screen.blit(self.gameover1_banner, self.gameover2_banner_rect)
+        screen.blit(self.replay_button, self.replay_button_rect)
+        for projectile in self.player1.all_projectiles:
+            Projectile.remove(projectile)
+        for projectile in self.player2.all_projectiles:
+            Projectile.remove(projectile)
+        for asteroide in self.all_asteroids:
+            Asteroid.remove(asteroide)
 
+    def gameover2_screen(self, screen, Projectile):        
+        self.is_playing = False
+        screen.blit(self.gameover2_banner, self.gameover1_banner_rect)
+        screen.blit(self.replay_button, self.replay_button_rect)
+        for projectile in self.player1.all_projectiles:
+            Projectile.remove(projectile)
+        for projectile in self.player2.all_projectiles:
+            Projectile.remove(projectile)
+        for asteroide in self.all_asteroids:
+            Asteroid.remove(asteroide)
