@@ -51,11 +51,12 @@ while True:
             if game.play_button_rect.collidepoint(event.pos):
                 game.is_playing = True
             
-            elif game.replay_button_rect.collidepoint(event.pos):
+            if game.replay_button_rect.collidepoint(event.pos):
                 game.player1.rect.y = 320 
-                game.player1.health = game.player1.health.max_health 
+                game.player1.health = game.player1.max_health 
                 game.player1.rect.y = 320 
-                game.player1.health = game.player1.health.max_health
+                game.player1.health = game.player1.max_health
+                game.is_playing = True
 
         # actions à l'enfoncement d'une touche clavier
         elif event.type == pg.KEYDOWN:

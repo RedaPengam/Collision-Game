@@ -5,7 +5,6 @@ from class_Asteroid import Asteroid
 class Game:
 
     def __init__(self, screen):
-
         # Création des fonds d'écran
         self.background = pg.image.load('data/background.jpg').convert() # creates the background picture variable that will be printed on the screen
         self.background = pg.transform.scale(self.background, (1280, 720))
@@ -40,20 +39,24 @@ class Game:
         
         # definir si notre jeu a commencé ou non
         self.is_playing = False
-        # players creation
+
+        # création des joueurs
         self.all_players = pg.sprite.Group()
         self.player1 = Player(self)
         self.player2 = Player(self)
         self.all_players.add(self.player1)
         self.all_players.add(self.player2)
-        # corrects the player2 initial position
+
+        # corrige la position initiale du joueur 2
         self.player2.rect.x = 1160
         self.player2.rect.y = 400
         self.player2.image = pg.image.load('data/joueur2.png')
         self.player2.image = pg.transform.scale(self.player2.image, (100, 70))
-        # keys currently pressed
+
+        # création du dictionnaire des touches pressées en live
         self.pressed = {}
-        # asteroids creation
+
+        # création des astéroïdes
         self.all_asteroids = pg.sprite.Group()
         self.asteroid1 = Asteroid(self)        
         self.asteroid2 = Asteroid(self)
@@ -65,7 +68,7 @@ class Game:
         return pg.sprite.spritecollide(sprite, group, False, pg.sprite.collide_mask)
 
     def ingame_screen(self, screen, Projectile):
-        # Affiche les sprites à l'écran
+        # affichage des sprites à l'écran
         screen.blit(self.player1.image, self.player1.rect)
         screen.blit(self.player2.image, self.player2.rect)
         screen.blit(self.asteroid1.image, self.asteroid1.rect)
@@ -85,13 +88,15 @@ class Game:
         for projectile in self.player2.all_projectiles:
             Projectile.move2(projectile)
 
-        # player1 actions if key pressed
+        # action du joueur 1 à l'enfoncement de ses touches de commande
         if self.pressed.get(pg.K_z) and self.player1.rect.y > 20 :
-            self.player1.move_up()            
+            self.player1.move_up()
+            self.player1.update_health_bar(screen)      
         elif self.pressed.get(pg.K_s) and self.player1.rect.y < 630 :
-            self.player1.move_down()
+            self.player1.move_down()            
+            self.player1.update_health_bar(screen)
         
-        # player2 actions if key pressed
+        # action du joueur 2 à l'enfoncement de ses touches de commande
         if self.pressed.get(pg.K_UP) and self.player2.rect.y > 20 :
             self.player2.move_up()
             self.player2.update_health_bar(screen)
@@ -99,7 +104,7 @@ class Game:
             self.player2.move_down()
             self.player2.update_health_bar(screen)
 
-        # asteroids actions
+        # mouvement des astéroïds
         self.asteroid1.move1()
         self.asteroid1.rotate1()
         self.asteroid2.move2()
@@ -117,6 +122,7 @@ class Game:
         self.is_playing = False
         screen.blit(self.gameover1_banner, self.gameover2_banner_rect)
         screen.blit(self.replay_button, self.replay_button_rect)
+        # retire tous les sprites de l'écran
         for projectile in self.player1.all_projectiles:
             Projectile.remove(projectile)
         for projectile in self.player2.all_projectiles:
@@ -128,6 +134,7 @@ class Game:
         self.is_playing = False
         screen.blit(self.gameover2_banner, self.gameover1_banner_rect)
         screen.blit(self.replay_button, self.replay_button_rect)
+        # retire tous les sprites de l'écran
         for projectile in self.player1.all_projectiles:
             Projectile.remove(projectile)
         for projectile in self.player2.all_projectiles:
