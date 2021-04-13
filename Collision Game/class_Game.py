@@ -104,7 +104,7 @@ class Game:
             self.player2.move_down()
             self.player2.update_health_bar(screen)
 
-        # mouvement des astéroïds
+        # mise en mouvement des astéroïds
         self.asteroid1.move1()
         self.asteroid1.rotate1()
         self.asteroid2.move2()
@@ -120,7 +120,8 @@ class Game:
 
     def gameover1_screen(self, screen, Projectile): 
         self.is_playing = False
-        screen.blit(self.gameover1_banner, self.gameover2_banner_rect)
+        # affiche l'écran gameover1
+        screen.blit(self.gameover1_banner, self.gameover1_banner_rect)
         screen.blit(self.replay_button, self.replay_button_rect)
         # retire tous les sprites de l'écran
         for projectile in self.player1.all_projectiles:
@@ -131,8 +132,9 @@ class Game:
             Asteroid.remove(asteroide)
 
     def gameover2_screen(self, screen, Projectile):        
-        self.is_playing = False
-        screen.blit(self.gameover2_banner, self.gameover1_banner_rect)
+        self.is_playing = False        
+        # affiche l'écran gameover2
+        screen.blit(self.gameover2_banner, self.gameover2_banner_rect)
         screen.blit(self.replay_button, self.replay_button_rect)
         # retire tous les sprites de l'écran
         for projectile in self.player1.all_projectiles:

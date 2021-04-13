@@ -26,10 +26,10 @@ while True:
     # affiche l'écran de menu sinon
     else :
         game.menu_screen(screen)
-    # affiche l'écran Game Over 2 si le joueur 2 meurt
+    # affiche l'écran gameover2 si le joueur 2 meurt
     if game.player2.health <= 0:
         game.gameover2_screen(screen, Projectile)
-    # affiche l'écran Game Over 1 si le joueur 1 meurt
+    # affiche l'écran gameover1 si le joueur 1 meurt
     elif game.player1.health <= 0:
         game.gameover1_screen(screen, Projectile)
         

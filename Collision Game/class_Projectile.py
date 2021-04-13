@@ -17,20 +17,17 @@ class Projectile(pg.sprite.Sprite):
     def move1(self):
         # déplace le projectile
         self.rect.x += self.velocity
-
         # verifie si le projectile entre en collision avec un joueur
         for player in self.class_Player.game.check_collision(self, self.class_Player.game.all_players):
             # supprime le projectile
             self.remove()
             # inflige des dégats aux joueurs 
             player.damage(self.class_Player.attack)
-            
         for asteroid in self.class_Player.game.check_collision(self, self.class_Player.game.all_asteroids):
             # supprime le projectile
             self.remove()            
             # inflige des dégats aux asteroids
             asteroid.damage(self.class_Player.attack)
-            
         # si le projectile sort de l'écran, on le supprime
         if self.rect.x > 1280 :
             self.remove()
@@ -41,20 +38,17 @@ class Projectile(pg.sprite.Sprite):
         # si le projectile sort de l'écran, on le supprime
         if self.rect.x < -50:
             self.remove()
-            
         # verifie si le projectile entre en collision avec un joueur
         for player in self.class_Player.game.check_collision(self, self.class_Player.game.all_players):
             # supprime le projectile
             self.remove()            
             # inflige des dégats aux joueurs 
             player.damage(self.class_Player.attack)
-            
         for asteroid in self.class_Player.game.check_collision(self, self.class_Player.game.all_asteroids):
             # supprime le projectile
             self.remove()            
             # inflige des dégats aux asteroids
             asteroid.damage(self.class_Player.attack)
-            
         # si le projectile sort de l'écran, on le supprime
         if self.rect.x > 1280 :
             self.remove()
