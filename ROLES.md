@@ -1,20 +1,49 @@
-# Projet Collision // Groupe 2-ristes
+# Distribution du travail lors du projet
 
-### Introduction
+### classe "Main"
 
-Dans le cadre de ce projet collision, on souhaite tout d'abord modéliser des objets d’une scène en deux dimensions à l’aide d’une enveloppe englobante définie dans un espace cartésien. Ensuite on souhaite être capable de déterminer si les objets de la scène sont en collision. 
+- Jules :
+- Maxine : 
+- Clément :
+- Manon :
+- Réda :
 
-Pour se faire, nous avons décidé de faire une variante du jeu *Space Invaders* à l'aide de la librairie Python *pygame*
+### Classe "Game"
 
-![](https://github.com/Max-Ine33/projet-collision-2ristes/blob/main/Collision%20Game/data/background.jpg)
+- Jules :
+- Maxine : 
+- Clément :
+- Manon :
+- Réda :
 
-Les membres du groupe sont : Jules Goueslard, Maxine Gravier, Clément Dohollou, Réda Pengam et Manon Braint
+### Classe "Projectile"
 
-### Installation
+- Jules :
+- Maxine : 
+- Clément :
+- Manon :
+- Réda :
 
-- Télécharger le dossier *Collision Game*
-- Compiler le fichier *class_Main.py*
+### Classe "Asteroid"
 
-### Contrôles
+- Jules :
+- Maxine : 
+- Clément :
+- Manon :
+- Réda : création des fonctions de mouvement random des astéroïdes 
 
-Le jeu se joue à deux : le but est de détruire le vaisseau adverse tout en évitant la pluie d'astéroïdes ! Le joueur à gauche déplace son vaisseau avec les touches *Z* et *S* et tire avec la barre *Espace*. Le joueur à droite se déplace avec les flêches directionnelles et tire avec la touche *Entrer*.
+### Classe "Player"
+
+- Jules :
+- Maxine : 
+- Clément :
+- Manon :
+- Réda :
+
+### autre
+
+- Jules :
+- Maxine : 
+- Clément :
+- Manon :
+- Réda : recherche sprites joueur et background + mise au propre générale de l'ensemble du code
