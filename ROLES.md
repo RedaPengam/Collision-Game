@@ -2,24 +2,24 @@
 
 ### classe "Main"
 
-- Jules :
+- Jules : 
 - Maxine : 
-- Clément :
-- Manon :
-- Réda :
+- Clément : 
+- Manon : 
+- Réda : création de cette classe et de son ensemble
 
 ### Classe "Game"
 
-- Jules :
+- Jules : ajout de l'écran d'accueil
 - Maxine : 
 - Clément :
-- Manon :
-- Réda :
+- Manon : ajout des écrans de gameover
+- Réda : création de cette classe et de sa structure générale
 
 ### Classe "Projectile"
 
 - Jules :
-- Maxine : 
+- Maxine : création de cette classe et de son ensemble
 - Clément :
 - Manon :
 - Réda :
@@ -30,20 +30,20 @@
 - Maxine : 
 - Clément :
 - Manon :
-- Réda : création des fonctions de mouvement random des astéroïdes 
+- Réda : création de cette classe + fonctions de mouvement random des astéroïdes 
 
 ### Classe "Player"
 
 - Jules :
 - Maxine : 
-- Clément :
+- Clément : création de cette classe et de son ensemble
 - Manon :
-- Réda :
+- Réda : 
 
-### autre
+### Autre
 
-- Jules :
+- Jules : création des visuels pour l'écran d'accueil
 - Maxine : 
 - Clément :
-- Manon :
+- Manon : création des visuels pour les écrans de gameover + recherche sur la collision de pygame
 - Réda : recherche sprites joueur et background + mise au propre générale de l'ensemble du code
