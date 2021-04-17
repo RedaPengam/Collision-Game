@@ -6,7 +6,7 @@
 - Maxine : affichage des projectiles des 2 joueurs/commande de tir
 - Clément : 
 - Manon : 
-- Réda : création de cette classe et de son ensemble
+- Réda : création de cette classe et de sa structure générale
 
 ### Classe "Game"
 
